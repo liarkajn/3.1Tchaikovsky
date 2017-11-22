@@ -7,7 +7,7 @@ import main.java.by.epam.web.domain.User;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.sql.*;
+import java.sql.*;// не импортирует через *
 import java.util.Properties;
 
 public class SQLUserDAO implements UserDAO {
@@ -17,7 +17,8 @@ public class SQLUserDAO implements UserDAO {
     private static final String USERNAME_PROPERTY = "username";
     private static final String PASSWORD_PROPERTY = "password";
     private static final String DRIVER_PROPERTY = "driver";
-    private final static String queryByNameAndSurname = "SELECT * FROM user WHERE name=? AND surname=?";
+    private final static String queryByNameAndSurname = "SELECT * FROM user WHERE name=? AND surname=?";// как объявляются final-поля?
+    // если начал писать static final - так и продолжай
     private String DB_URL;
     private String USERNAME;
     private String PASSWORD;
@@ -28,7 +29,8 @@ public class SQLUserDAO implements UserDAO {
     @Override
     public User findUser(String name, String surname) throws DAOException {
         User user = new User();
-        prepareDatabase();
+        prepareDatabase();// зачем этот метод каждый раз читает из файла одни и теже данные?
+        // еу больше заняться нечем?
         try (Connection connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
              PreparedStatement preparedStatement = connection.prepareStatement(queryByNameAndSurname)) {
 
@@ -57,10 +59,10 @@ public class SQLUserDAO implements UserDAO {
         USERNAME = properties.getProperty(USERNAME_PROPERTY);
         PASSWORD = properties.getProperty(PASSWORD_PROPERTY);
         JDBC_DRIVER = properties.getProperty(DRIVER_PROPERTY);
-        loadDriver();
+        loadDriver();// и каждый раз грузит класс в память?
     }
 
-    private Properties getMySQLProperties() throws DAOException {
+    private Properties getMySQLProperties() throws DAOException {// private методу излишне выбрасывать DAOException
         Properties properties = new Properties();
         URL url = getClass().getClassLoader().getResource(MYSQL_CONFIG);
         if (url == null) {

@@ -41,7 +41,7 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    private boolean compareFields(User user) {
+    private boolean compareFields(User user) {// откуда в бине появился метод логики?
         if (!name.equals(user.name) || !surname.equals(user.surname)
                 || !name.equals(user.phoneNumber) || !name.equals(user.email)) {
             return false;
