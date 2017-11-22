@@ -40,7 +40,7 @@ public class UserValidator {
     }
 
     private boolean checkPhoneNumber(String field) {
-        Pattern pattern = Pattern.compile(PHONE_NUMBER_REGEX);
+        Pattern pattern = Pattern.compile(PHONE_NUMBER_REGEX);// зачем ты каждый раз создаешь абсолюно обинаковый объект pattern?
         Matcher matcher = pattern.matcher(field);
         return matcher.matches();
     }
