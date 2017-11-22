@@ -7,7 +7,7 @@ import main.java.by.epam.web.domain.User;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.sql.*;
+import java.sql.*;// не импортирует через *
 import java.util.Properties;
 
 public class SQLUserDAO implements UserDAO {
