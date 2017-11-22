@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
             UserValidator userValidator = new UserValidator();
             userValidator.validateUser(user);
         } catch (DAOException e) {
-            throw new ServiceException(e);
+            throw new ServiceException(e);// крайне желательно свое исключение выбрасывать и со своим сообщением
         }
         return user;
     }
