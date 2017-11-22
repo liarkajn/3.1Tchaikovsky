@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class CommandImpl implements Command {
+public class CommandImpl implements Command {// как в фильме про трех мушкетеров - Имя, сестра, имя...
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         ServiceFactory factory = ServiceFactory.getInstance();
         UserService userService = factory.getUserService();
-        String name = request.getParameter("name");
+        String name = request.getParameter("name");// неименованные строки, и предупреждала же
         String surname = request.getParameter("surname");
         User user;
         try {
