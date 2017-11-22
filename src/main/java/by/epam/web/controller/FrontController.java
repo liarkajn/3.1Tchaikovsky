@@ -24,6 +24,8 @@ public class FrontController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        super.doPost(request, response);
+        super.doPost(request, response);// второй раз встречаю такой код за день
+        // откуда вы необходимость этого кода взяли?
+        // ну вот просто подумайте. что такого полезного лелает ваш doPost?
     }
 }
